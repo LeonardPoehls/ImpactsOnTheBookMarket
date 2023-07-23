@@ -1,0 +1,39 @@
+WE <- ggplot(data = DatasetTest) +
+   geom_line(aes(x=Quan, y=Pred_Price, group = Group), linetype = 2, size = 0.9) +
+   geom_line(aes(x=Quan, y=Real_Price, group = Group), linetype = 1, size = 0.9) +
+   geom_segment(aes(x = 2, y = 0, xend = 2, yend = 1), color = "red", linetype = "dashed") +
+   geom_segment(aes(x = 3, y = 0, xend = 3, yend = 1), color = "red", linetype = "dashed") +
+   geom_segment(aes(x = 4, y = 0, xend = 4, yend = 1), color = "red", linetype = "dashed") +
+   geom_segment(aes(x = 0, y = 1, xend = 5, yend = 1),size=1.1, color = "red") +
+ 
+ #Mark Zone A
+   geom_text(aes(x=1.25, y=1.15, label = "A"), color = "black", hjust=0, size=5, alpha = 0.1) +
+   geom_segment(aes(x = 1, y = 1, xend = 1, yend = 1.5), color = "black", linetype = "dashed") +
+ #Mark Zone B
+   geom_text(aes(x=1.5, y=1.5, label = "B"), color = "black", hjust=0, size=5, alpha = 0.1) +
+   geom_segment(aes(x = 1, y = 1.5, xend = 1, yend = 2.1), color = "black", linetype = "dashed") +
+   geom_segment(aes(x = 2, y = 1, xend = 2, yend = 1.5), color = "black", linetype = "dashed") +
+ #Mark Zone C
+   geom_text(aes(x=2.27, y=1.17, label = "C"), color = "black", hjust=0, size=5, alpha = 0.1) +
+ #Mark Zone D
+   geom_text(aes(x=3.6, y=0.9, label = "D"), color = "black", hjust=0, size=5, alpha = 0.1) +
+   geom_segment(aes(x = 4, y = 0.65, xend = 4, yend = 1), color = "black", linetype = "dashed") +
+ #Mark intersection points
+   geom_point(aes(x = 2, y=1), color = "red", size=2.5) +
+   geom_point(aes(x = 4, y=1), color = "red", size=2.5) +
+   geom_text(aes(x=1.8, y=0.93, label = "P1"), color = "black", hjust=0, size=3, alpha = 0.1) +
+   geom_text(aes(x=3.8, y=0.93, label = "P2"), color = "black", hjust=0, size=3, alpha = 0.1) +
+ 
+ #Add line description
+   geom_text(aes(x=0, y=1.55, label = "Expected Quality without \nPre-Purchase Information\n _  _  _  _  _  _  _  _  _  _  "), color = "Black", hjust=0, size= 2.2, alpha=0.1) + 
+   geom_text(aes(x=0, y=2.05, label = "Actual Quality with \nPre-Purchase Information\n ___________________"), color = "Black", hjust=0, size= 2.2, alpha=0.1) +
+   
+ #Set specific layout
+   theme_bw() +
+   labs(title = "Figure 3 - The Economic Value Added Of Pre-Purchase Information",
+        x = "Quantity", 
+        y = "Price") +
+   scale_x_continuous(breaks = 1:5, labels = c("", "Q1", "Q*", "Q2", "")) +
+   theme(
+   axis.text.y=element_blank(),
+   panel.grid.minor=element_blank(),plot.background=element_blank())

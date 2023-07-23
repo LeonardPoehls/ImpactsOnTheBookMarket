@@ -1,0 +1,20 @@
+PE <- ggplot(data = DatasetPEN, aes(x = Price, y = Quantity_Value, group = ε)) +
++   geom_line() +
++   theme_bw() +
++   geom_segment(aes(x = 4, y = 8, xend = 4, yend = 9), color = "red", linetype = "dashed") +
++   geom_segment(aes(x = 4, y = 9, xend = 2, yend = 9), color = "red", linetype = "dashed") +
++   geom_text(aes(x=2.75, y=9.25, label = "ΔQU = 2"), color = "red", hjust=0, size=2.5, alpha = 0.1) +
++   geom_text(aes(x=4.25, y=9.1, label = "ΔPU = 1"), color = "red", angle = 270, hjust=0, size=2.5, alpha = 0.1) +
++   geom_text(aes(x=5, y=7.85, label = "ε = 2"), color = "black", angle = 340.5, hjust=0, size=4, alpha = 0.1) +
++   
++   geom_segment(aes(x = 4, y = 6, xend = 4, yend = 7), color = "red", linetype = "dashed") +
++   geom_segment(aes(x = 4, y = 7, xend = 3, yend = 7), color = "red", linetype = "dashed") +
++   geom_text(aes(x=3.15, y=7.2, label = "ΔQU = 1"), color = "red", hjust=0, size=2.5, alpha = 0.1) +
++   geom_text(aes(x=4.25, y=6.9, label = "PU = 1"), color = "red", angle = 270, hjust=0, size=2.5, alpha = 0.1) +
++   geom_text(aes(x=5, y=5.45, label = "ε = 1"), color = "black", angle = 323.5, hjust=0, size=4, alpha = 0.1) +
++   
++   geom_segment(aes(x = 4, y = 2, xend = 4, yend = 4), color = "red", linetype = "dashed") +
++   geom_segment(aes(x = 4, y = 4, xend = 3, yend = 4), color = "red", linetype = "dashed") +
++   geom_text(aes(x=3.15, y=4.2, label = "ΔQU = 1"), color = "red", hjust=0, size=2.5, alpha = 0.1) +
++   geom_text(aes(x=4.25, y=3.45, label = "ΔPU = 2"), color = "red", angle = 270, hjust=0, size=2.5, alpha = 0.1) +
++   geom_text(aes(x=4.45, y=1.75, label = "ε = 0,5"), color = "black", angle = 307.5, hjust=0, size=4, alpha = 0.1)

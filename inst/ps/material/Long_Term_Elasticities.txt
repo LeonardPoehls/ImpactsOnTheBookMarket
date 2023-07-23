@@ -1,0 +1,57 @@
+data <- data %>%
+  filter(cno == 3) %>%
+  arrange(canum, ddate)
+
+data <- merge(data, A_B_params)
+data <- merge(data, sigma)
+data <- data %>%
+  mutate(B = (-1)*B)
+
+
+lmean <- mean(data$lreview)
+
+
+
+star_elas_25 <- dataUS$B * (reg5$coefficients["lR"] +  reg5$coefficients["lrR"] * quantile(dataUS$lreview, probs = 0.25, na.rm = TRUE)) / (1 -  reg5$coefficients["L1.lrank"])
+
+star_elas_50 <- dataUS$B * ( reg5$coefficients["lR"] +  reg5$coefficients["lrR"] * quantile(dataUS$lreview, probs = 0.5, na.rm = TRUE)) / (1 -  reg5$coefficients["L1.lrank"])
+
+star_elas_75 <- dataUS$B * ( reg5$coefficients["lR"] +  reg5$coefficients["lrR"] * quantile(dataUS$lreview, probs = 0.75, na.rm = TRUE)) / (1 -  reg5$coefficients["L1.lrank"])
+
+dataUS$star_elas_25 <- star_elas_25
+dataUS$star_elas_50 <- star_elas_50
+dataUS$star_elas_75 <- star_elas_75
+
+star_elas_mean <- dataUS$B * (reg5$coefficients["lR"] + reg5$coefficients["lrR"] * mean(dataUS$lreview)) / (1 - reg5$coefficients["L1.lrank"])
+
+star_elas_se <- var(dataUS$B * (reg5$coefficients["lR"] + reg5$coefficients["lrR"] * mean(dataUS$lreview)) / (1 - reg5$coefficients["L1.lrank"])) / sqrt(length(dataUS))
+
+
+
+
+dataUS$star_elas_mean <- star_elas_mean
+
+	
+price_elas_mean <- dataUS$B * reg5$coefficients["lpamzn"] / (1 - reg5$coefficients["L1.lrank"])
+dataUS$price_elas_mean <- price_elas_mean
+
+nyt_1_5_not_rec <- dataUS$B * reg5$coefficients["dnytpost1_3"] / (1 - reg5$coefficients["L1.lrank"])
+dataUS$nyt_1_5_not_rec <- nyt_1_5_not_rec
+
+
+nyt_6_10_not_rec <- dataUS$B * reg5$coefficients["dnytpost6_3"] / (1 - reg5$coefficients["L1.lrank"])
+dataUS$nyt_6_10_not_rec <- nyt_6_10_not_rec
+nyt_11_20_not_rec <- dataUS$B * reg5$coefficients["dnytpost10_3"] / (1 - reg5$coefficients["L1.lrank"])
+dataUS$nyt_11_20_not_rec <- nyt_11_20_not_rec
+
+nyt_1_5_rec <- dataUS$B * reg5$coefficients["dnytpost1r_3"] / (1 - reg5$coefficients["L1.lrank"])
+dataUS$nyt_1_5_rec <- nyt_1_5_rec
+nyt_6_10_rec <- dataUS$B * reg5$coefficients["dnytpost6r_3"] / (1 - reg5$coefficients["L1.lrank"])
+dataUS$nyt_6_10_rec <- nyt_6_10_rec
+nyt_11_20_rec <- dataUS$B * reg5$coefficients["dnytpost10r_3"] / (1 - reg5$coefficients["L1.lrank"])
+dataUS$nyt_11_20_rec <- nyt_11_20_rec
+
+oth_1_10 <- dataUS$B *  reg5$coefficients["dothpost_3"] / (1 - reg5$coefficients["L1.lrank"])
+dataUS$oth_1_10 <- oth_1_10
+oth_11_20 <- dataUS$B *  reg5$coefficients["dothpost10_3"] / (1 - reg5$coefficients["L1.lrank"])
+dataUS$oth_11_20 <- oth_11_20

@@ -1,0 +1,13 @@
+
+f12 <- ggplot(data = DesAuth) +
+  facet_grid(~Group) +
+  geom_bar(aes(x = NumBooks, y = Number/sum(Number), fill = Group), stat = "identity") +
+  theme_bw() +
+  labs(title = "Figure 12 − Professional Reviews Among the Number Of Publications",
+       x = " Categories Of Book Genres", 
+       y = "Occurrence Density Of Professional reviews") +
+  guides(fill=guide_legend(title="")) +
+  theme(legend.position = "",
+  axis.text.x=element_blank(),
+  panel.grid.minor=element_blank(),plot.background=element_blank())
+f12

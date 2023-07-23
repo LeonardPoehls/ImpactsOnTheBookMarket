@@ -1,0 +1,12 @@
+Package: ImpactsOfReviewsAndCrowdRatings
+Type: Package
+Title: RTutor problem set The Impacts of reviews and Ratings on Book Market
+Version: 0.1
+Date: 2023-05-06
+Author: Leonard Pöhls
+Maintainer: Leonard Pöhls <leonard.poehls@uni-ulm.de.de>
+Description: RTutor problem set The Impacts of reviews and Ratings on Book Market
+License: Not yet licensed by the author. The default suggestion for licensing is
+	Problem set content: Creative Commons (CC BY-SA)
+	Package code: GPL >= 2.0
+Depends: RTutor, ggplot2, tidyverse, kableExtra, modelsummary, fixest
